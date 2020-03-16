@@ -49,6 +49,20 @@ describe("lodash.object.builders", function () {
     assert.deepEqual(nest, [1, {a: 2, b: [3,4], c: 5}, 6], 'should not modify the original nested structure');
   });
 
+  it("getPath", function() {
+    var obj = {a:{b:
+                      {c: 42, d: 108}
+                },
+              testValue: 'test'
+    };
+
+
+    assert.deepEqual(_.getPath(obj, 'a.b.c'), 42);
+    assert.deepEqual(_.getPath(obj, 'a.b.d'), 108);
+    assert.deepEqual(_.getPath(obj, 'testValue'), 'test');
+
+  });
+
   it("updatePath", function() {
     var obj = {a: {b: {c: 42, d: 108}}};
     var ary = ['a', ['b', ['c', 'd'], 'e']];

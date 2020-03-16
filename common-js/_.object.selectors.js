@@ -60,7 +60,8 @@ module.exports = function (_) {
       // value is null, stop executing and return undefined
       if (obj === null) return void 0;
 
-      return getPath(obj[_.first(ks)], _.rest(ks));
+      //remove _rest as contact has changed and unscore replacing with drop
+      return getPath(obj[_.first(ks)], _.drop(ks, 1));
     },
 
     // Returns a boolean indicating whether there is a property
